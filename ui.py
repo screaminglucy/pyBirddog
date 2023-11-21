@@ -2,6 +2,7 @@ import tkinter as tk
 import tkinter.font as tkFont
 import requests
 import time
+import json
 
 birddog_ip_addrs = {'narthex_r': "192.168.10.100", 'narthex_l': "192.168.0.157", 'rear': "192.168.0.157", 'sanctuary_l': "192.168.0.157", 'sanctuary_r': "192.168.0.157"}
 
@@ -256,6 +257,13 @@ class App:
             set_ndi_src(self.ip_list["sanctuary_r"], src)
 
 if __name__ == "__main__":
+    # Opening JSON file
+    f = open('ipcfg.json')
+
+    # returns JSON object as
+    # a dictionary
+    birddog_ip_addrs = json.load(f)
+    f.close()
     root = tk.Tk()
     app = App(root)
     root.mainloop()
